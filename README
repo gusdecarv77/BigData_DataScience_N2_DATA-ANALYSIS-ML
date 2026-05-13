@@ -1,0 +1,69 @@
+# Projeto Final: Big Data & Data Science
+## Análise de Dados e Machine Learning - FATESG 2026/01
+
+### 1. Identificação Acadêmica
+* [cite_start]**Professor:** Reinaldo Jr [cite: 5]
+* [cite_start]**Disciplina:** Big Data e Data Science [cite: 5]
+* **Integrantes:** * Gustavo L. de Carvalho
+    * [Lauro Lobo]
+    * [Felipe Mendonça]
+    * [Carlos Henrique Alves]
+
+---
+
+### 2. Introdução
+[cite_start]Este projeto visa a integração prática dos fundamentos de estatística descritiva, visualização avançada e modelagem preditiva[cite: 8]. [cite_start]Através do processamento de uma base de dados real, aplicamos técnicas de Ciência de Dados para extrair insights e realizar previsões[cite: 9].
+
+---
+
+### 3. Etapa 1: Coleta e Estatística Descritiva (R1)
+**Nova Data de Entrega: 20/05/2026**
+
+#### 3.1 Documentação da Base de Dados
+* **Fonte:** [Link da base pública]
+* [cite_start]**Resumo Analítico:** [Descreva aqui o problema que os dados ajudam a resolver e por que essa base é relevante][cite: 18].
+* **Dicionário de Variáveis:**
+| Variável | Tipo de Dado | Descrição |
+| :--- | :--- | :--- |
+| Coluna_X | Quantitativa | Explicação da unidade de medida ou significado |
+
+#### 3.2 Análise Estatística e Interpretação
+[cite_start]Nesta seção, apresentamos as métricas de tendência central e dispersão[cite: 19].
+
+> [cite_start]**Nota Crítica:** Cada valor abaixo é acompanhado de uma análise qualitativa sobre o que o número representa no contexto real do problema[cite: 20].
+
+* **Medidas de Tendência Central:** (Média, Mediana, Moda)
+* **Medidas de Dispersão:** (Desvio Padrão, Variância, Máximos e Mínimos)
+* **Análise de Quartis:** (Identificação de concentração de dados e potenciais outliers)
+
+---
+
+### 4. Etapa 2: Visualização e Modelagem (R2 e R3)
+**Nova Data de Entrega: 27/05/2026**
+
+#### 4.1 Dashboard de Visualização (R2)
+[cite_start]O painel visual foi desenvolvido para facilitar a interpretação dos padrões identificados[cite: 21].
+* **Gráfico 1:** [Tipo e Objetivo]
+* **Gráfico 2:** [Tipo e Objetivo]
+* **Gráfico 3:** [Tipo e Objetivo]
+
+#### 4.2 Modelagem Preditiva (R3)
+[cite_start]Aplicação de algoritmos de Machine Learning para realização de previsões (Classificação ou Regressão)[cite: 23, 24].
+
+1. **Algoritmo A:** [Nome]
+   * [cite_start]**Justificativa:** Por que este modelo foi escolhido? [cite: 25]
+   * **Métricas:** [Acurácia/Precisão/RMSE/etc]
+2. **Algoritmo B:** [Nome]
+   * [cite_start]**Justificativa:** Por que este modelo foi escolhido? [cite: 25]
+   * **Métricas:** [Acurácia/Precisão/RMSE/etc]
+
+#### 4.3 Comparação de Resultados
+[cite_start]Análise técnica comparando a performance dos dois modelos utilizados e as conclusões obtidas[cite: 26].
+
+---
+
+### 5. Tecnologias Utilizadas
+* [cite_start]**Linguagem:** Python / R [cite: 15]
+* **Ambiente:** Jupyter Notebook / VS Code
+* **Bibliotecas:** Pandas, NumPy, Matplotlib/Seaborn, Scikit-Learn
+* **Software de BI:** [Se houver]
