@@ -1,86 +1,95 @@
+---
 
-# Projeto Prático de Big Data & Data Science (N2) | FATESG 2026/01
-# Análise de Dados e Machine Learning - FATESG 2026/01
-# Análise Preditiva: Saúde Global e Investimento (1960-Presente)
+# 🩺 Health Analytics: Gasto Público vs. Longevidade
 
+### Análise Preditiva Global (1960 — Presente)
 
-### 1. Identificação Acadêmica
-
-* **Professor:** Reinaldo Jr.
-* **Disciplina:** Big Data e Data Science
-* **Integrantes:**
-* Gustavo Lourenço de Carvalho
-* Lauro Lobo
-* Felipe Mendonça
-* Carlos Henrique Alves
-
-
+> **Status do Projeto:** 🚧 Em Desenvolvimento (R1)
+> **Disciplina:** Big Data & Data Science | **Instituição:** SENAI Fatesg
 
 ---
 
-### 2. Introdução e Contexto
+## 👥 Equipe
 
-Este projeto investiga a evolução histórica (de 1960 até o presente) da relação entre os investimentos em sistemas de saúde e os resultados em longevidade e redução de mortalidade. Utilizamos o dataset público **"Life Expectancy and Healthcare Spending"** para aplicar técnicas de limpeza, análise estatística e modelos de Machine Learning.
-
-**Objetivo Central:** Determinar se o aumento proporcional no gasto com saúde tem uma correlação linear direta com o aumento da expectativa de vida ou se existem retornos decrescentes a partir de certas faixas de investimento.
+* **Gustavo Lourenço de Carvalho** 🎓
+* **Lauro Lobo** 🎓
+* **Felipe Mendonça** 🎓
+* **Carlos Henrique Alves** 🎓
 
 ---
 
-### 3. Pipeline de Dados e Setup (Etapa 1 - R1)
+## 🎯 Objetivo do Projeto
 
-**Data de Entrega: 20/05/2026**
+Investigar se o aumento do investimento financeiro em saúde pública gera um retorno linear na expectativa de vida ou se atingimos um "teto de eficiência".
 
-#### 3.1 Coleta Automatizada
+**Principais perguntas:**
 
-A base de dados é consumida diretamente do Kaggle via API, garantindo a utilização da versão mais recente dos dados.
+1. Qual a correlação entre leitos hospitalares e mortalidade infantil?
+2. Como o PIB dedicado à saúde impactou a longevidade nas últimas 6 décadas?
+3. Podemos prever a expectativa de vida de um país com base em seus gastos atuais?
 
-```python
-import kagglehub
-# Download e carregamento via KaggleDatasetAdapter
-df = kagglehub.load_dataset(
-    KaggleDatasetAdapter.PANDAS,
-    "belbino/life-expectancy-healthcare-spending-1960-present",
-    "health_panel.csv" # Arquivo consolidado principal
-)
+---
+
+## 🏗️ Arquitetura do Pipeline (Mermaid)
+
+Para ilustrar o fluxo que vocês estão construindo:
+
+```mermaid
+graph TD
+    A[Kaggle API] -->|Download| B(Dataset: health_panel.csv)
+    B --> C{Data Cleaning}
+    C -->|R1| D[Estatística Descritiva]
+    C -->|R2| E[Dashboard Interativo]
+    D -->|R3| F[Modelagem Preditiva]
+    E --> F
+    F --> G[Insights Finais]
 
 ```
 
-#### 3.2 Estrutura do Dataset (Dicionário de Variáveis)
+---
 
-O projeto integra 5 arquivos principais para compor a análise:
+## 📊 Cronograma de Entregas
 
-| Variável | Descrição | Fonte |
-| --- | --- | --- |
-| `Life_Expectancy` | Expectativa de vida média ao nascer. | `life_expectancy.csv` |
-| `Health_Spending` | Investimento em saúde (% PIB ou per capita). | `health_spending.csv` |
-| `Infant_Mortality` | Óbitos infantis a cada 1.000 nascidos vivos. | `infant_mortality.csv` |
-| `Hospital_Beds` | Leitos hospitalares por 1.000 habitantes. | `hospital_capacity.csv` |
-| `Country_Code` | Identificador único do país (ISO 3166-1). | `context.csv` |
-
-#### 3.3 Análise Estatística Descritiva
-
-A primeira etapa foca na compreensão da distribuição dos dados:
-
-* **Tendência Central:** Médias globais de longevidade por década.
-* **Dispersão:** Variância dos gastos entre países do G20 vs. Países em desenvolvimento.
-* **Interpretação:** Análise qualitativa sobre os *outliers* (países que gastam muito, mas possuem indicadores de saúde abaixo da média).
+| Etapa | Requisito | Foco | Data |
+| --- | --- | --- | --- |
+| **R1** | Coleta e Estatística | Dicionário de variáveis, Medidas de dispersão e Outliers. | **20/05/2026** |
+| **R2** | Visualização | Dashboards, Time-Series e Gráficos de Correlação. | **27/05/2026** |
+| **R3** | Machine Learning | Comparação: Regressão Linear vs. Random Forest. | **27/05/2026** |
 
 ---
 
-### 4. Dashboards e Machine Learning (Etapa 2 e 3 - R2 e R3)
+## 💻 Como Executar
 
-**Data de Entrega: 27/05/2026**
+### 1. Clonar o repositório
 
-* **R2 (Visualização):** Desenvolvimento de dashboard interativo demonstrando a evolução temporal (Time-Series) dos gastos vs. resultados.
-* **R3 (Modelagem Preditiva):** Comparação entre dois modelos (ex: Regressão Linear e Random Forest) para prever a expectativa de vida com base nos indicadores de investimento e capacidade hospitalar.
+```bash
+git clone https://github.com/seu-usuario/projeto-saude-fatesg.git
+
+```
+
+### 2. Instalar dependências
+
+```bash
+pip install kagglehub pandas matplotlib seaborn scikit-learn
+
+```
+
+### 3. Configuração do Kaggle
+
+Certifique-se de ter o arquivo `kaggle.json` na sua pasta de usuário para que o `kagglehub` possa autenticar e baixar os dados automaticamente.
 
 ---
 
-### 5. Requisitos de Execução
+## 📓 Notas Técnicas (Work in Progress)
 
-1. Python 3.10+
-2. `pip install kagglehub pandas matplotlib seaborn scikit-learn`
-3. Token de API do Kaggle configurado no ambiente.
+* **Tratamento de Dados:** Estamos utilizando o `health_panel.csv` como núcleo, realizando *inner joins* com metadados geográficos para permitir análises por continente.
+* **Estatística:** O foco inicial da R1 está em entender por que países com gastos similares apresentam desvios padrões de expectativa de vida tão distintos.
 
 ---
-## In progress...
+## Work  in progress...
+© 2026 - SENAI Fatesg | Projeto Acadêmico
+
+---
+5. **Gráfico Mermaid:** Se você colar esse código em um visualizador de Markdown (como o do VS Code ou o próprio GitHub), ele gerará um fluxograma automático. Isso mostra um domínio avançado de documentação.
+
+O que achou dessa "maquiagem" visual? Se precisar de algum ajuste nos nomes ou links, é só falar!
