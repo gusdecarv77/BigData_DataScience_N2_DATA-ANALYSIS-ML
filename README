@@ -1,69 +1,86 @@
-# Projeto Final: Big Data & Data Science
-## Análise de Dados e Machine Learning - FATESG 2026/01
+
+# Projeto Prático de Big Data & Data Science (N2) | FATESG 2026/01
+# Análise de Dados e Machine Learning - FATESG 2026/01
+# Análise Preditiva: Saúde Global e Investimento (1960-Presente)
+
 
 ### 1. Identificação Acadêmica
-* [cite_start]**Professor:** Reinaldo Jr [cite: 5]
-* [cite_start]**Disciplina:** Big Data e Data Science [cite: 5]
-* **Integrantes:** * Gustavo L. de Carvalho
-    * [Lauro Lobo]
-    * [Felipe Mendonça]
-    * [Carlos Henrique Alves]
+
+* **Professor:** Reinaldo Jr.
+* **Disciplina:** Big Data e Data Science
+* **Integrantes:**
+* Gustavo Lourenço de Carvalho
+* Lauro Lobo
+* Felipe Mendonça
+* Carlos Henrique Alves
+
+
 
 ---
 
-### 2. Introdução
-[cite_start]Este projeto visa a integração prática dos fundamentos de estatística descritiva, visualização avançada e modelagem preditiva[cite: 8]. [cite_start]Através do processamento de uma base de dados real, aplicamos técnicas de Ciência de Dados para extrair insights e realizar previsões[cite: 9].
+### 2. Introdução e Contexto
+
+Este projeto investiga a evolução histórica (de 1960 até o presente) da relação entre os investimentos em sistemas de saúde e os resultados em longevidade e redução de mortalidade. Utilizamos o dataset público **"Life Expectancy and Healthcare Spending"** para aplicar técnicas de limpeza, análise estatística e modelos de Machine Learning.
+
+**Objetivo Central:** Determinar se o aumento proporcional no gasto com saúde tem uma correlação linear direta com o aumento da expectativa de vida ou se existem retornos decrescentes a partir de certas faixas de investimento.
 
 ---
 
-### 3. Etapa 1: Coleta e Estatística Descritiva (R1)
-**Nova Data de Entrega: 20/05/2026**
+### 3. Pipeline de Dados e Setup (Etapa 1 - R1)
 
-#### 3.1 Documentação da Base de Dados
-* **Fonte:** [Link da base pública]
-* [cite_start]**Resumo Analítico:** [Descreva aqui o problema que os dados ajudam a resolver e por que essa base é relevante][cite: 18].
-* **Dicionário de Variáveis:**
-| Variável | Tipo de Dado | Descrição |
-| :--- | :--- | :--- |
-| Coluna_X | Quantitativa | Explicação da unidade de medida ou significado |
+**Data de Entrega: 20/05/2026**
 
-#### 3.2 Análise Estatística e Interpretação
-[cite_start]Nesta seção, apresentamos as métricas de tendência central e dispersão[cite: 19].
+#### 3.1 Coleta Automatizada
 
-> [cite_start]**Nota Crítica:** Cada valor abaixo é acompanhado de uma análise qualitativa sobre o que o número representa no contexto real do problema[cite: 20].
+A base de dados é consumida diretamente do Kaggle via API, garantindo a utilização da versão mais recente dos dados.
 
-* **Medidas de Tendência Central:** (Média, Mediana, Moda)
-* **Medidas de Dispersão:** (Desvio Padrão, Variância, Máximos e Mínimos)
-* **Análise de Quartis:** (Identificação de concentração de dados e potenciais outliers)
+```python
+import kagglehub
+# Download e carregamento via KaggleDatasetAdapter
+df = kagglehub.load_dataset(
+    KaggleDatasetAdapter.PANDAS,
+    "belbino/life-expectancy-healthcare-spending-1960-present",
+    "health_panel.csv" # Arquivo consolidado principal
+)
 
----
+```
 
-### 4. Etapa 2: Visualização e Modelagem (R2 e R3)
-**Nova Data de Entrega: 27/05/2026**
+#### 3.2 Estrutura do Dataset (Dicionário de Variáveis)
 
-#### 4.1 Dashboard de Visualização (R2)
-[cite_start]O painel visual foi desenvolvido para facilitar a interpretação dos padrões identificados[cite: 21].
-* **Gráfico 1:** [Tipo e Objetivo]
-* **Gráfico 2:** [Tipo e Objetivo]
-* **Gráfico 3:** [Tipo e Objetivo]
+O projeto integra 5 arquivos principais para compor a análise:
 
-#### 4.2 Modelagem Preditiva (R3)
-[cite_start]Aplicação de algoritmos de Machine Learning para realização de previsões (Classificação ou Regressão)[cite: 23, 24].
+| Variável | Descrição | Fonte |
+| --- | --- | --- |
+| `Life_Expectancy` | Expectativa de vida média ao nascer. | `life_expectancy.csv` |
+| `Health_Spending` | Investimento em saúde (% PIB ou per capita). | `health_spending.csv` |
+| `Infant_Mortality` | Óbitos infantis a cada 1.000 nascidos vivos. | `infant_mortality.csv` |
+| `Hospital_Beds` | Leitos hospitalares por 1.000 habitantes. | `hospital_capacity.csv` |
+| `Country_Code` | Identificador único do país (ISO 3166-1). | `context.csv` |
 
-1. **Algoritmo A:** [Nome]
-   * [cite_start]**Justificativa:** Por que este modelo foi escolhido? [cite: 25]
-   * **Métricas:** [Acurácia/Precisão/RMSE/etc]
-2. **Algoritmo B:** [Nome]
-   * [cite_start]**Justificativa:** Por que este modelo foi escolhido? [cite: 25]
-   * **Métricas:** [Acurácia/Precisão/RMSE/etc]
+#### 3.3 Análise Estatística Descritiva
 
-#### 4.3 Comparação de Resultados
-[cite_start]Análise técnica comparando a performance dos dois modelos utilizados e as conclusões obtidas[cite: 26].
+A primeira etapa foca na compreensão da distribuição dos dados:
+
+* **Tendência Central:** Médias globais de longevidade por década.
+* **Dispersão:** Variância dos gastos entre países do G20 vs. Países em desenvolvimento.
+* **Interpretação:** Análise qualitativa sobre os *outliers* (países que gastam muito, mas possuem indicadores de saúde abaixo da média).
 
 ---
 
-### 5. Tecnologias Utilizadas
-* [cite_start]**Linguagem:** Python / R [cite: 15]
-* **Ambiente:** Jupyter Notebook / VS Code
-* **Bibliotecas:** Pandas, NumPy, Matplotlib/Seaborn, Scikit-Learn
-* **Software de BI:** [Se houver]
+### 4. Dashboards e Machine Learning (Etapa 2 e 3 - R2 e R3)
+
+**Data de Entrega: 27/05/2026**
+
+* **R2 (Visualização):** Desenvolvimento de dashboard interativo demonstrando a evolução temporal (Time-Series) dos gastos vs. resultados.
+* **R3 (Modelagem Preditiva):** Comparação entre dois modelos (ex: Regressão Linear e Random Forest) para prever a expectativa de vida com base nos indicadores de investimento e capacidade hospitalar.
+
+---
+
+### 5. Requisitos de Execução
+
+1. Python 3.10+
+2. `pip install kagglehub pandas matplotlib seaborn scikit-learn`
+3. Token de API do Kaggle configurado no ambiente.
+
+---
+## In progress...
